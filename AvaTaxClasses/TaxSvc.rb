@@ -16,6 +16,37 @@ class TaxSvc
   end
   
   def CalcTax
+    
+    body_hash = {
+      :DocDate=>"2013-02-11", 
+      :CustomerCode=>"0000", 
+      :CompanyCode=>"SDK", 
+      :DocType=>"SalesInvoice", 
+      :Commit=>true, 
+      :Addresses=>[{
+        :AddressCode=>"1", 
+        :Line1=>"435 Ericksen Avenue Northeast", 
+        :Line2=>"#250", 
+        :PostalCode=>"98110"}], 
+      :Lines=>[{
+        :LineNo=>"1", 
+        :DestinationCode=>"1", 
+        :OriginCode=>"1", 
+        :Qty=>1, 
+        :Amount=>10}]
+      }
+    uri = URI(@service_url + @@service_path  + "get")
+    req = Net::HTTP::Post.new(uri.path)
+    req.set_form_data(body_hash)
+    req.basic_auth @account_number, @license_key
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    res = nil
+    http.start do |sock|
+      res = sock.request(req)
+    end
+    JSON.parse(res.body)
   end
   
   
