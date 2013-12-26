@@ -23,4 +23,14 @@ print "EstimateTax ResultCode: "+result["ResultCode"]+"\n"
 if result["ResultCode"] != "Success"
   #Print the first error message returned
   print result["Messages"][0]["Summary"]+"\n"
+else
+  print "Total Tax Calculated: " + result["Tax"].to_s + "\n"
+  print "Jurisdiction Breakdown:\n"
+  #Show the tax amount calculated at each jurisdictional level
+  result["TaxDetails"].each do |d| 
+    print "   "
+    print d["JurisName"]+ ": " +d["Tax"].to_s 
+    print "\n"
+  end
+
 end

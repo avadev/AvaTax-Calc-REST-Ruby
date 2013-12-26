@@ -26,4 +26,10 @@ print "Address Validation ResultCode: "+result["ResultCode"]+"\n"
 if result["ResultCode"] != "Success"
   #Print the first error message returned
   print result["Messages"][0]["Summary"]+"\n"
+else
+  print "Validated Address: \n"
+  result["Address"].each do |key, value|
+    print key + ": " + value +"\n"
+  end
+  
 end
