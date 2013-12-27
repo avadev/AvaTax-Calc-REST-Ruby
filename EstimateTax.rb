@@ -27,9 +27,9 @@ else
   print "Total Tax Calculated: " + result["Tax"].to_s + "\n"
   print "Jurisdiction Breakdown:\n"
   #Show the tax amount calculated at each jurisdictional level
-  result["TaxDetails"].each do |d| 
+  result["TaxDetails"].each do |detail| 
     print "   "
-    print d["JurisName"]+ ": " +d["Tax"].to_s 
+    print detail["JurisName"]+ ": " +detail["Tax"].to_s 
     print "\n"
   end
 

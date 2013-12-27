@@ -2,6 +2,7 @@ require 'json'
 require 'net/http'
 require 'addressable/uri'
 require 'base64'
+require 'rest-client'
 
 class TaxSvc
   @@service_path = "/1.0/tax/"
@@ -15,42 +16,20 @@ class TaxSvc
     @service_url = service_url
   end
   
-  def CalcTax
-    
-    body_hash = {
-      :DocDate=>"2013-02-11", 
-      :CustomerCode=>"0000", 
-      :CompanyCode=>"SDK", 
-      :DocType=>"SalesInvoice", 
-      :Commit=>true, 
-      :Addresses=>[{
-        :AddressCode=>"1", 
-        :Line1=>"435 Ericksen Avenue Northeast", 
-        :Line2=>"#250", 
-        :PostalCode=>"98110"}], 
-      :Lines=>[{
-        :LineNo=>"1", 
-        :DestinationCode=>"1", 
-        :OriginCode=>"1", 
-        :Qty=>1, 
-        :Amount=>10}]
-      }
-    uri = URI(@service_url + @@service_path  + "get")
-    req = Net::HTTP::Post.new(uri.path)
-    req.set_form_data(body_hash)
-    req.basic_auth @account_number, @license_key
-    http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-    res = nil
-    http.start do |sock|
-      res = sock.request(req)
-    end
+  def CalcTax(request_hash)
+    uri = @service_url + @@service_path + "get"
+    cred = 'Basic '+ Base64.encode64(@account_number + ":"+ @license_key)
+    res = RestClient.post uri, JSON.generate(request_hash), :authorization => cred
     JSON.parse(res.body)
   end
   
   
-  def CancelTax
+  def CancelTax(request_hash)
+    uri = @service_url + @@service_path + "cancel"
+    cred = 'Basic '+ Base64.encode64(@account_number + ":"+ @license_key)
+    res = RestClient.post uri, JSON.generate(request_hash), :authorization => cred
+    JSON.parse(res.body)["CancelTaxResult"] 
+    #You may notice that this is slightly different from CalcTax, etc. The CancelTax result is  nested in this result object - this makes it consumable in a way that is consistant with the other response formats.
   end
   
   def EstimateTax(coordinates, sale_amount)
