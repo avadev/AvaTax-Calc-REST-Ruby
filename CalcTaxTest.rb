@@ -15,7 +15,7 @@ svc = TaxSvc.new(
   #
   calc_tax_request = {
       # Set the tax document properties - Required unless noted as Optional
-      :CompanyCode => "SDK",                          # R: Company Code from the accounts Admin Console
+      :CompanyCode => "DEFAULT",                          # R: Company Code from the accounts Admin Console
       :Client => "AvaTaxCalcRESTruby Sample",         # R: Identifies the software client initiating the webservice call               
       :DocCode =>"SampleDoc: " + DateTime.now.to_s,   # R: Invoice or document tracking number - Must be unique
       :DocType => "SalesInvoice",                     # R: Typically SalesOrder,SalesInvoice, ReturnInvoice
