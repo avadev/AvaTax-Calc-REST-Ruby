@@ -1,35 +1,36 @@
 require_relative 'AvaTaxClasses/AddressSvc'
 
-#Create an instance of the service class
-svc = AddressSvc.new(
-  "username", 
-  "password",  
-  "https://development.avalara.net"
-  )
+# Header Level Elements
+# Required Header Level Elements
+accountNumber = "1234567890"
+licenseKey = "A1B2C3D4E5F6G7H8"
+serviceURL = "https://development.avalara.net"
+
+addressSvc = AddressSvc.new(accountNumber, licenseKey, serviceURL);
   
-  # Create the request
-input = {
-  :Line1 => "General Delivery", #Required
-  :Line2 => "Suite 100",        #Optional
-  :Line3 => "Attn: Accounts Payable", #Optional
-  :City =>"Seattle",            #Required, if PostalCode is not specified
-  :Region=>"WA",                #Required, if PostalCode is not specified
-  :PostalCode =>"98101",        #Required, if City and Region are not specified
-  :Country => "US"              #Optional
+validateRequest = {
+  #Required Request Parameters
+   :line1 => "118 N Clark St",
+   :city => "Chicago",
+   :region => "IL",
+  #Optional Request Parameters
+   :line2 => "Suite 100",
+   :line3 => "ATTN Accounts Payable",
+   :country => "US",
+   :postalCode => "60602"
 }
 #Call the service
-result = svc.Validate(input)
-#Display the result
-print "Address Validation ResultCode: "+result["ResultCode"]+"\n"
-
-#If we encountered an error
-if result["ResultCode"] != "Success"
-  #Print the first error message returned
-  print result["Messages"][0]["Summary"]+"\n"
+validateResult = addressSvc.Validate(validateRequest)
+# Print Results
+puts "ValidateAddressTest Result: "+validateResult["ResultCode"]
+if validateResult["ResultCode"] != "Success"
+  validateResult["Messages"].each { |message| puts message["Summary"] }
 else
-  print "Validated Address: \n"
-  result["Address"].each do |key, value|
-    print key + ": " + value +"\n"
-  end
-  
+  puts validateResult["Address"]["Line1"] + 
+  " " + 
+  validateResult["Address"]["City"] + 
+  ", " + 
+  validateResult["Address"]["Region"] + 
+  " " + 
+  validateResult["Address"]["PostalCode"]
 end
