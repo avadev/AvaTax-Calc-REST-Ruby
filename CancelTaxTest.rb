@@ -1,27 +1,25 @@
 require_relative 'AvaTaxClasses/TaxSvc'
 
-#Create an instance of the service class
-svc = TaxSvc.new(
-  "username", 
-  "password",  
-  "https://development.avalara.net"
-  )
-  
-  #Create the request
-  request = {
-    :DocCode=>"2013-02-11",   #Required
-    :CompanyCode=>"SDK",      #Required
-    :DocType=>"SalesInvoice", #Required
-    :CancelCode=>"DocDeleted" #Required
+# Header Level Elements
+# Required Header Level Elements
+accountNumber = "1234567890"
+licenseKey = "A1B2C3D4E5F6G7H8"
+serviceURL = "https://development.avalara.net"
+
+taxSvc = TaxSvc.new(accountNumber, licenseKey, serviceURL);
+
+cancelTaxRequest = {
+    # Required Request Parameters
+    :companyCode => "APITrialCompany",
+    :docType => "SalesInvoice",
+    :docCode => "INV001",
+    :cancelCode => "DocVoided"
     }
-  #Call the service
-result = svc.CancelTax(request)
 
-#Display the result
-print "CancelTax ResultCode: "+result["ResultCode"]+"\n"
+cancelTaxResult = taxSvc.CancelTax(cancelTaxRequest)
 
-#If we encountered an error
-if result["ResultCode"] != "Success"
-  #Print the first error message returned
-  print result["Messages"][0]["Summary"]+"\n"
+# Print Results
+puts "CancelTaxTest ResultCode: "+cancelTaxResult["ResultCode"]
+if cancelTaxResult["ResultCode"] != "Success"
+  cancelTaxResult["Messages"].each { |message| puts message["Summary"] }
 end

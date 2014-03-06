@@ -9,18 +9,20 @@ serviceURL = "https://development.avalara.net"
 addressSvc = AddressSvc.new(accountNumber, licenseKey, serviceURL);
   
 validateRequest = {
-  #Required Request Parameters
+  # Required Request Parameters
    :line1 => "118 N Clark St",
    :city => "Chicago",
    :region => "IL",
-  #Optional Request Parameters
+  # Optional Request Parameters
    :line2 => "Suite 100",
    :line3 => "ATTN Accounts Payable",
    :country => "US",
    :postalCode => "60602"
 }
-#Call the service
+
+# Call the service
 validateResult = addressSvc.Validate(validateRequest)
+
 # Print Results
 puts "ValidateAddressTest Result: "+validateResult["ResultCode"]
 if validateResult["ResultCode"] != "Success"

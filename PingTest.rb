@@ -1,20 +1,17 @@
 require_relative 'AvaTaxClasses/TaxSvc'
 
-#Create an instance of the service class
-svc = TaxSvc.new(
-  "username", 
-  "password",  
-  "https://development.avalara.net"
-  )
+# Header Level Elements
+# Required Header Level Elements
+accountNumber = "1234567890"
+licenseKey = "A1B2C3D4E5F6G7H8"
+serviceURL = "https://development.avalara.net"
 
-  #Call the service
-result = svc.Ping
+taxSvc = TaxSvc.new(accountNumber, licenseKey, serviceURL);
+
+pingResult = taxSvc.Ping
 
 #Display the result
-print "Ping ResultCode: "+result["ResultCode"]+"\n"
-
-#If we encountered an error
-if result["ResultCode"] != "Success"
-  #Print the first error message returned
-  print result["Messages"][0]["Summary"]+"\n"
+puts "PingTest ResultCode: "+ pingResult["ResultCode"]
+if pingResult["ResultCode"] != "Success"
+  pingResult["Messages"].each { |message| puts message["Summary"] }
 end

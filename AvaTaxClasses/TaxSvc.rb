@@ -16,9 +16,10 @@ class TaxSvc
     @service_url = service_url
   end
   
-  def CalcTax(request_hash)
+  def GetTax(request_hash)
     uri = @service_url + @@service_path + "get"
     cred = 'Basic '+ Base64.encode64(@account_number + ":"+ @license_key)
+    puts JSON.generate(request_hash)
     res = RestClient.post uri, JSON.generate(request_hash), :authorization => cred
     JSON.parse(res.body)
   end

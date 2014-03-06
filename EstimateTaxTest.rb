@@ -1,36 +1,31 @@
 require_relative 'AvaTaxClasses/TaxSvc'
 
-#Create an instance of the service class
-svc = TaxSvc.new(
-  "username", 
-  "password",  
-  "https://development.avalara.net"
-  )
+# Header Level Elements
+# Required Header Level Elements
+accountNumber = "1234567890"
+licenseKey = "A1B2C3D4E5F6G7H8"
+serviceURL = "https://development.avalara.net"
+
+taxSvc = TaxSvc.new(accountNumber, licenseKey, serviceURL);
   
-  #Create the request
+#Required Request Parameters
 location = {
-  :latitude => "47.627935",   #Required
-  :longitude => "-122.51702"  #Required
+  :latitude => "47.627935", 
+  :longitude => "-122.51702"
 }
-sale_amount = 50.44           #Required
+saleAmount = 10
 
-#Call the service
-result = svc.EstimateTax(location, sale_amount)
-#Display the result
-print "EstimateTax ResultCode: "+result["ResultCode"]+"\n"
+# Call the service
+geoTaxResult = taxSvc.EstimateTax(location, saleAmount)
 
-#If we encountered an error
-if result["ResultCode"] != "Success"
-  #Print the first error message returned
-  print result["Messages"][0]["Summary"]+"\n"
+# Print Results
+puts "EstimateTaxTest ResultCode: "+geoTaxResult["ResultCode"]
+if geoTaxResult["ResultCode"] != "Success"
+  geoTaxResult["Messages"].each { |message| puts message["Summary"] }
 else
-  print "Total Tax Calculated: " + result["Tax"].to_s + "\n"
-  print "Jurisdiction Breakdown:\n"
+  puts "Total Rate: " + geoTaxResult["Rate"].to_s + " Total Tax: " + geoTaxResult["Tax"].to_s
   #Show the tax amount calculated at each jurisdictional level
-  result["TaxDetails"].each do |detail| 
-    print "   "
-    print detail["JurisName"]+ ": " +detail["Tax"].to_s 
-    print "\n"
+  geoTaxResult["TaxDetails"].each do |taxDetail| 
+    puts "   " + "Jurisdiction: " + taxDetail["JurisName"] + " Tax: " + taxDetail["Tax"].to_s 
   end
-
 end
