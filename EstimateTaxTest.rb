@@ -10,8 +10,8 @@ taxSvc = TaxSvc.new(accountNumber, licenseKey, serviceURL);
   
 #Required Request Parameters
 location = {
-  :latitude => "47.627935", 
-  :longitude => "-122.51702"
+  :Latitude => "47.627935", 
+  :Longitude => "-122.51702"
 }
 saleAmount = 10
 

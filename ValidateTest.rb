@@ -10,14 +10,14 @@ addressSvc = AddressSvc.new(accountNumber, licenseKey, serviceURL);
   
 validateRequest = {
   # Required Request Parameters
-   :line1 => "118 N Clark St",
-   :city => "Chicago",
-   :region => "IL",
+   :Line1 => "118 N Clark St",
+   :City => "Chicago",
+   :Region => "IL",
   # Optional Request Parameters
-   :line2 => "Suite 100",
-   :line3 => "ATTN Accounts Payable",
-   :country => "US",
-   :postalCode => "60602"
+   :Line2 => "Suite 100",
+   :Line3 => "ATTN Accounts Payable",
+   :Country => "US",
+   :PostalCode => "60602"
 }
 
 # Call the service

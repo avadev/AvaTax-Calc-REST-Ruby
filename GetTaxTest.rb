@@ -11,112 +11,112 @@ taxSvc = TaxSvc.new(accountNumber, licenseKey, serviceURL);
 getTaxRequest = {
   # Document Level Elements
   # Required Request Parameters
-  :customerCode => "ABC4335",
-  :docDate => "2014-01-01",
+  :CustomerCode => "ABC4335",
+  :DocDate => "2014-01-01",
 
   # Best Practice Request Parameters
-  :companyCode => "APITrialCompany",
+  :CompanyCode => "APITrialCompany",
   :Client => "AvaTaxSample",
-  :docCode => "INV001",
-  :detailLevel => "Tax",
-  :commit => false,
-  :docType => "SalesInvoice",
+  :DocCode => "INV001",
+  :DetailLevel => "Tax",
+  :Commit => false,
+  :DocType => "SalesInvoice",
 
   # Situational Request Parameters
-  # :customerUsageType => "G",
-  # :exemptionNo => "12345",
-  # :discount => 50,
-  # :taxOverride => 
+  # :CustomerUsageType => "G",
+  # :ExemptionNo => "12345",
+  # :Discount => 50,
+  # :TaxOverride => 
   # [{
-  #   :taxOverrideType => "TaxDate",
-  #   :reason => "Adjustment for return",
-  #   :taxDate => "2013-07-01",
-  #   :taxAmount => 0,
+  #   :TaxOverrideType => "TaxDate",
+  #   :Reason => "Adjustment for return",
+  #   :TaxDate => "2013-07-01",
+  #   :TaxAmount => 0,
   # }],
   
   # Optional Request Parameters
-  :purchaseOrderNo => "PO123456",
-  :referenceCode => "ref123456",
-  :posLaneCode => "09",
-  :currencyCode => "USD",
+  :PurchaseOrderNo => "PO123456",
+  :ReferenceCode => "ref123456",
+  :PosLaneCode => "09",
+  :CurrencyCode => "USD",
 
   # Address Data
-  :addresses => 
+  :Addresses => 
   [
     {
-      :addressCode => "01",
-      :line1 => "45 Fremont Street",
-      :city => "San Francisco",
-      :region => "CA",
+      :AddressCode => "01",
+      :Line1 => "45 Fremont Street",
+      :City => "San Francisco",
+      :Region => "CA",
     },
     {
-      :addressCode => "02",
-      :line1 => "118 N Clark St",
-      :line2 => "Suite 100",
-      :line3 => "ATTN Accounts Payable",
-      :city => "Chicago",
-      :region => "IL",
-      :country => "US",
-      :postalCode => "60602",
+      :AddressCode => "02",
+      :Line1 => "118 N Clark St",
+      :Line2 => "Suite 100",
+      :Line3 => "ATTN Accounts Payable",
+      :City => "Chicago",
+      :Region => "IL",
+      :Country => "US",
+      :PostalCode => "60602",
     },
     {
-      :addressCode => "03",
-      :latitude => "47.627935",
-      :longitude => "-122.51702",
+      :AddressCode => "03",
+      :Latitude => "47.627935",
+      :Longitude => "-122.51702",
     }
   ],
 
   # Line Data
-  :lines => 
+  :Lines => 
   [
     {
     # Required Parameters
-    :lineNo => "01",
-    :itemCode => "N543",
-    :qty => 1,
-    :amount => 10,
-    :originCode => "01",
-    :destinationCode => "02",
+    :LineNo => "01",
+    :ItemCode => "N543",
+    :Qty => 1,
+    :Amount => 10,
+    :OriginCode => "01",
+    :DestinationCode => "02",
 
     # Best Practice Request Parameters
-    :description => "Red Size 7 Widget",
-    :taxCode => "NT",
+    :Description => "Red Size 7 Widget",
+    :TaxCode => "NT",
 
     # Situational Request Parameters
-    # :customerUsageType => "L",
-    # :discounted => true,
-    # :taxIncluded => true,
-    # :taxOverride => 
+    # :CustomerUsageType => "L",
+    # :Discounted => true,
+    # :TaxIncluded => true,
+    # :TaxOverride => 
     # [{
-    #   :taxOverrideType => "TaxDate",
-    #   :reason => "Adjustment for return",
-    #   :taxDate => "2013-07-01",
-    #   :taxAmount => 0,
+    #   :TaxOverrideType => "TaxDate",
+    #   :Reason => "Adjustment for return",
+    #   :TaxDate => "2013-07-01",
+    #   :TaxAmount => 0,
     # }],
 
     #Optional Request Parameters
-    :ref1 => "ref123",
-    :ref2 => "ref456",
+    :Ref1 => "ref123",
+    :Ref2 => "ref456",
     },
     {
-    :lineNo => "02",
-    :itemCode => "T345",
-    :qty => 3,
-    :amount => 150,
-    :originCode => "01",
-    :destinationCode => "03",
-    :description =>  "Size 10 Green Running Shoe",
-    :taxCode => "PC030147"
+    :LineNo => "02",
+    :ItemCode => "T345",
+    :Qty => 3,
+    :Amount => 150,
+    :OriginCode => "01",
+    :DestinationCode => "03",
+    :Description =>  "Size 10 Green Running Shoe",
+    :TaxCode => "PC030147"
     },
     {
-    :lineNo => "02-FR",
-    :itemCode => "FREIGHT",
-    :qty => 1,
-    :amount => 15,
-    :originCode => "01",
-    :destinationCode => "03",
-    :description => "Shipping Charge",
-    :taxCode => "FR"
+    :LineNo => "02-FR",
+    :ItemCode => "FREIGHT",
+    :Qty => 1,
+    :Amount => 15,
+    :OriginCode => "01",
+    :DestinationCode => "03",
+    :Description => "Shipping Charge",
+    :TaxCode => "FR"
     }
   ]
 }

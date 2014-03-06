@@ -10,10 +10,10 @@ taxSvc = TaxSvc.new(accountNumber, licenseKey, serviceURL);
 
 cancelTaxRequest = {
     # Required Request Parameters
-    :companyCode => "APITrialCompany",
-    :docType => "SalesInvoice",
-    :docCode => "INV001",
-    :cancelCode => "DocVoided"
+    :CompanyCode => "APITrialCompany",
+    :DocType => "SalesInvoice",
+    :DocCode => "INV001",
+    :CancelCode => "DocVoided"
     }
 
 cancelTaxResult = taxSvc.CancelTax(cancelTaxRequest)
