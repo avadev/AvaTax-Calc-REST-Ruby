@@ -129,7 +129,7 @@ if getTaxResult["ResultCode"] != "Success"
   getTaxResult["Messages"].each { |message| puts message["Summary"] }
 else
   puts "Document Code: " + getTaxResult["DocCode"] + " Total Tax: " + getTaxResult["TotalTax"].to_s
-  result["TaxLines"].each do |taxLine|
+  getTaxResult["TaxLines"].each do |taxLine|
       puts "    " + "Line Number: " + taxLine["LineNo"] + " Line Tax: " + taxLine["Tax"].to_s
       taxLine["TaxDetails"].each do |taxDetail| 
           puts "        " + "Jurisdiction: " + taxDetail["JurisName"] + " Tax: " + taxDetail["Tax"].to_s
