@@ -12,5 +12,5 @@ PLATFORMS
 
 DEPENDENCIES
   addressable
-  json (= 1.8.0)
-  rest-client (= 1.6.7)
+  json
+  rest-client
