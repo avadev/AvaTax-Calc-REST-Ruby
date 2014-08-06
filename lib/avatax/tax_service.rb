@@ -3,17 +3,17 @@ require 'net/http'
 require 'addressable/uri'
 require 'base64'
 require 'rest-client'
+require_relative 'configuration'
 
 class AvaTax::TaxService
   @@service_path = "/1.0/tax/"
-  attr_accessor :account_number
-  attr_accessor :license_key
-  attr_accessor :service_url
+  attr_accessor :account_number, :license_key, :service_url
 
-  def initialize(account_number, license_key, service_url)
-    @account_number = account_number
-    @license_key = license_key
-    @service_url = service_url
+  def initialize()
+    puts AvaTax::Configuration.instance.inspect
+    @account_number = AvaTax::Configuration.instance.account_number
+    @license_key = AvaTax::Configuration.instance.license_key
+    @service_url = AvaTax::Configuration.instance.service_url
   end
 
   def get(request_hash)

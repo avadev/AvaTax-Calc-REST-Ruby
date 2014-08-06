@@ -2,11 +2,9 @@ require 'avatax'
 
 # Header Level Elements
 # Required Header Level Elements
-accountNumber = "1234567890"
-licenseKey = "A1B2C3D4E5F6G7H8"
-serviceURL = "https://development.avalara.net"
+AvaTax.configure_from 'credentials.yml'
 
-taxSvc = AvaTax::TaxService.new(accountNumber, licenseKey, serviceURL);
+taxSvc = AvaTax::TaxService.new
 
 getTaxRequest = {
   # Document Level Elements
