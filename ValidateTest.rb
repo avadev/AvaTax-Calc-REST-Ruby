@@ -1,4 +1,4 @@
-require_relative 'lib/avalara/AddressSvc'
+require_relative 'lib/avalara/address_service'
 
 # Header Level Elements
 # Required Header Level Elements

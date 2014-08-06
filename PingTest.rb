@@ -1,4 +1,4 @@
-require_relative 'lib/avalara/TaxSvc'
+require_relative 'lib/avalara/tax_service'
 
 # Header Level Elements
 # Required Header Level Elements
