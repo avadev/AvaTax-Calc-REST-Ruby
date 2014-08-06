@@ -4,7 +4,7 @@ require 'addressable/uri'
 require 'base64'
 require 'rest-client'
 
-class Avalara::TaxService
+class AvaTax::TaxService
   @@service_path = "/1.0/tax/"
   attr_accessor :account_number
   attr_accessor :license_key

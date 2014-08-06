@@ -27,6 +27,7 @@ Contents:
 Dependencies:
 -----------
 - Ruby 1.9.2 or later
+- [Bundler](http://bundler.io)
 
 Requirements:
 ----------
