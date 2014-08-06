@@ -1,4 +1,4 @@
-require_relative 'AvaTaxClasses/AddressSvc'
+require_relative 'lib/avalara/AddressSvc'
 
 # Header Level Elements
 # Required Header Level Elements

@@ -1,4 +1,4 @@
-require_relative 'AvaTaxClasses/TaxSvc'
+require_relative 'lib/avalara/TaxSvc'
 
 # Header Level Elements
 # Required Header Level Elements
