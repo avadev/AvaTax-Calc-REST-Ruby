@@ -8,8 +8,8 @@ taxSvc = AvaTax::TaxService.new
 
 #Required Request Parameters
 location = {
-  :Latitude => "47.627935",
-  :Longitude => "-122.51702"
+  :latitude => "47.627935",
+  :longitude => "-122.51702"
 }
 saleAmount = 10
 
