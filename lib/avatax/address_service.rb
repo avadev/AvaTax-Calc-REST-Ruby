@@ -21,7 +21,7 @@ class AvaTax::AddressService
     uri = URI(@service_url + @@service_path  + "validate?"+ encodedquery.query)
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    http.verify_mode = OpenSSL::SSL::VERIFY_PEER
 
     cred = 'Basic '+ Base64.encode64(@account_number + ":"+ @license_key)
     res = http.get(uri.request_uri, 'Authorization' => cred)
