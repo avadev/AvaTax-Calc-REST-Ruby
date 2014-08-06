@@ -16,7 +16,7 @@ location = {
 saleAmount = 10
 
 # Call the service
-geoTaxResult = taxSvc.EstimateTax(location, saleAmount)
+geoTaxResult = taxSvc.estimate(location, saleAmount)
 
 # Print Results
 puts "EstimateTaxTest ResultCode: "+geoTaxResult["ResultCode"]

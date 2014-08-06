@@ -21,7 +21,7 @@ validateRequest = {
 }
 
 # Call the service
-validateResult = addressSvc.Validate(validateRequest)
+validateResult = addressSvc.validate(validateRequest)
 
 # Print Results
 puts "ValidateAddressTest Result: "+validateResult["ResultCode"]

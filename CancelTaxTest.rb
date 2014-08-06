@@ -16,7 +16,7 @@ cancelTaxRequest = {
     :CancelCode => "DocVoided"
     }
 
-cancelTaxResult = taxSvc.CancelTax(cancelTaxRequest)
+cancelTaxResult = taxSvc.cancel(cancelTaxRequest)
 
 # Print Results
 puts "CancelTaxTest ResultCode: "+cancelTaxResult["ResultCode"]

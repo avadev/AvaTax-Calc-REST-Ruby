@@ -8,7 +8,7 @@ serviceURL = "https://development.avalara.net"
 
 taxSvc = AvaTax::TaxService.new(accountNumber, licenseKey, serviceURL);
 
-pingResult = taxSvc.Ping
+pingResult = taxSvc.ping
 
 #Display the result
 puts "PingTest ResultCode: "+ pingResult["ResultCode"]

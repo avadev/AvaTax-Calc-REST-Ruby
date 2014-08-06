@@ -121,7 +121,7 @@ getTaxRequest = {
   ]
 }
 
-getTaxResult = taxSvc.GetTax(getTaxRequest)
+getTaxResult = taxSvc.get(getTaxRequest)
 
 # Print Results
 puts "getTaxTest ResultCode: " + getTaxResult["ResultCode"]

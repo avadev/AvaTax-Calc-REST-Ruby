@@ -15,7 +15,7 @@ class AvaTax::AddressService
     @service_url = service_url
   end
 
-  def Validate(address)
+  def validate(address)
     return address if address.nil?
     encodedquery = Addressable::URI.new
     encodedquery.query_values = address
