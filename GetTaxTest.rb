@@ -33,7 +33,7 @@ getTaxRequest = {
   #   :TaxDate => "2013-07-01",
   #   :TaxAmount => 0,
   # }],
-  
+
   # Optional Request Parameters
   :PurchaseOrderNo => "PO123456",
   :ReferenceCode => "ref123456",
@@ -41,7 +41,7 @@ getTaxRequest = {
   :CurrencyCode => "USD",
 
   # Address Data
-  :Addresses => 
+  :Addresses =>
   [
     {
       :AddressCode => "01",
@@ -67,7 +67,7 @@ getTaxRequest = {
   ],
 
   # Line Data
-  :Lines => 
+  :Lines =>
   [
     {
     # Required Parameters
@@ -131,7 +131,7 @@ else
   puts "Document Code: " + getTaxResult["DocCode"] + " Total Tax: " + getTaxResult["TotalTax"].to_s
   getTaxResult["TaxLines"].each do |taxLine|
       puts "    " + "Line Number: " + taxLine["LineNo"] + " Line Tax: " + taxLine["Tax"].to_s
-      taxLine["TaxDetails"].each do |taxDetail| 
+      taxLine["TaxDetails"].each do |taxDetail|
           puts "        " + "Jurisdiction: " + taxDetail["JurisName"] + " Tax: " + taxDetail["Tax"].to_s
       end
   end
