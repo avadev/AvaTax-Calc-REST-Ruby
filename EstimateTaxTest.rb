@@ -1,4 +1,4 @@
-require_relative 'lib/avalara/tax_service'
+require_relative 'lib/avalara'
 
 # Header Level Elements
 # Required Header Level Elements
@@ -6,7 +6,7 @@ accountNumber = "1234567890"
 licenseKey = "A1B2C3D4E5F6G7H8"
 serviceURL = "https://development.avalara.net"
 
-taxSvc = TaxSvc.new(accountNumber, licenseKey, serviceURL);
+taxSvc = Avalara::TaxService.new(accountNumber, licenseKey, serviceURL);
 
 #Required Request Parameters
 location = {

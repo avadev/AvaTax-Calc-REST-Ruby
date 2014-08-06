@@ -3,7 +3,7 @@ require 'net/http'
 require 'addressable/uri'
 require 'base64'
 
-class AddressSvc
+class Avalara::AddressService
   @@service_path = '/1.0/address/'
   attr_accessor :account_number
   attr_accessor :license_key
