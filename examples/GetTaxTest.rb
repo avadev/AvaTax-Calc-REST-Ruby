@@ -1,4 +1,5 @@
 require 'avatax'
+require 'date'
 
 # Header Level Elements
 # Required Header Level Elements
@@ -10,12 +11,12 @@ getTaxRequest = {
   # Document Level Elements
   # Required Request Parameters
   :CustomerCode => "ABC4335",
-  :DocDate => "2014-01-01",
+  :DocDate => "#{Date.today}",
 
   # Best Practice Request Parameters
   :CompanyCode => "APITrialCompany",
   :Client => "AvaTaxSample",
-  :DocCode => "INV001",
+  :DocCode => "INV#{Time.new.to_i}",
   :DetailLevel => "Tax",
   :Commit => false,
   :DocType => "SalesInvoice",
@@ -134,3 +135,4 @@ else
       end
   end
 end
+puts "Generated DocCode: " + getTaxResult["DocCode"]
