@@ -1,23 +1,22 @@
-require_relative 'AvaTaxClasses/TaxSvc'
+require 'avatax'
+require 'date'
 
 # Header Level Elements
 # Required Header Level Elements
-accountNumber = "1234567890"
-licenseKey = "A1B2C3D4E5F6G7H8"
-serviceURL = "https://development.avalara.net"
+AvaTax.configure_from 'credentials.yml'
 
-taxSvc = TaxSvc.new(accountNumber, licenseKey, serviceURL);
+taxSvc = AvaTax::TaxService.new
 
 getTaxRequest = {
   # Document Level Elements
   # Required Request Parameters
   :CustomerCode => "ABC4335",
-  :DocDate => "2014-01-01",
+  :DocDate => "#{Date.today}",
 
   # Best Practice Request Parameters
   :CompanyCode => "APITrialCompany",
   :Client => "AvaTaxSample",
-  :DocCode => "INV001",
+  :DocCode => "INV#{Time.new.to_i}",
   :DetailLevel => "Tax",
   :Commit => false,
   :DocType => "SalesInvoice",
@@ -33,7 +32,7 @@ getTaxRequest = {
   #   :TaxDate => "2013-07-01",
   #   :TaxAmount => 0,
   # }],
-  
+
   # Optional Request Parameters
   :PurchaseOrderNo => "PO123456",
   :ReferenceCode => "ref123456",
@@ -41,7 +40,7 @@ getTaxRequest = {
   :CurrencyCode => "USD",
 
   # Address Data
-  :Addresses => 
+  :Addresses =>
   [
     {
       :AddressCode => "01",
@@ -67,7 +66,7 @@ getTaxRequest = {
   ],
 
   # Line Data
-  :Lines => 
+  :Lines =>
   [
     {
     # Required Parameters
@@ -121,7 +120,7 @@ getTaxRequest = {
   ]
 }
 
-getTaxResult = taxSvc.GetTax(getTaxRequest)
+getTaxResult = taxSvc.get(getTaxRequest)
 
 # Print Results
 puts "getTaxTest ResultCode: " + getTaxResult["ResultCode"]
@@ -131,8 +130,9 @@ else
   puts "Document Code: " + getTaxResult["DocCode"] + " Total Tax: " + getTaxResult["TotalTax"].to_s
   getTaxResult["TaxLines"].each do |taxLine|
       puts "    " + "Line Number: " + taxLine["LineNo"] + " Line Tax: " + taxLine["Tax"].to_s
-      taxLine["TaxDetails"].each do |taxDetail| 
+      taxLine["TaxDetails"].each do |taxDetail|
           puts "        " + "Jurisdiction: " + taxDetail["JurisName"] + " Tax: " + taxDetail["Tax"].to_s
       end
   end
 end
+puts "Generated DocCode: " + getTaxResult["DocCode"]

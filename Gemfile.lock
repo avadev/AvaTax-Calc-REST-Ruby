@@ -1,16 +1,24 @@
+PATH
+  remote: .
+  specs:
+    avatax (0.0.1)
+      addressable (~> 2.3)
+      json (~> 1.8)
+      rest-client (~> 1.7)
+
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.3.5)
-    json (1.8.0)
-    mime-types (2.0)
-    rest-client (1.6.7)
-      mime-types (>= 1.16)
+    addressable (2.3.6)
+    json (1.8.1)
+    mime-types (2.3)
+    netrc (0.7.7)
+    rest-client (1.7.2)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  addressable
-  json (= 1.8.0)
-  rest-client (= 1.6.7)
+  avatax!

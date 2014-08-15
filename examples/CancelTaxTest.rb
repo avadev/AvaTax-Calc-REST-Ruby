@@ -1,22 +1,26 @@
-require_relative 'AvaTaxClasses/TaxSvc'
+require 'avatax'
 
 # Header Level Elements
 # Required Header Level Elements
-accountNumber = "1234567890"
-licenseKey = "A1B2C3D4E5F6G7H8"
-serviceURL = "https://development.avalara.net"
 
-taxSvc = TaxSvc.new(accountNumber, licenseKey, serviceURL);
+if ARGV.count != 1
+  puts "Usage: ruby CancelTaxTest.rb <DocumentCode>"
+  exit(-1)
+end
+
+AvaTax.configure_from 'credentials.yml'
+
+taxSvc = AvaTax::TaxService.new
 
 cancelTaxRequest = {
     # Required Request Parameters
     :CompanyCode => "APITrialCompany",
     :DocType => "SalesInvoice",
-    :DocCode => "INV001",
+    :DocCode => ARGV[0],
     :CancelCode => "DocVoided"
     }
 
-cancelTaxResult = taxSvc.CancelTax(cancelTaxRequest)
+cancelTaxResult = taxSvc.cancel(cancelTaxRequest)
 
 # Print Results
 puts "CancelTaxTest ResultCode: "+cancelTaxResult["ResultCode"]

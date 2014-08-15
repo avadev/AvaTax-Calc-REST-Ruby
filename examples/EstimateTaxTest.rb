@@ -1,22 +1,20 @@
-require_relative 'AvaTaxClasses/TaxSvc'
+require 'avatax'
 
 # Header Level Elements
 # Required Header Level Elements
-accountNumber = "1234567890"
-licenseKey = "A1B2C3D4E5F6G7H8"
-serviceURL = "https://development.avalara.net"
+AvaTax.configure_from 'credentials.yml'
 
-taxSvc = TaxSvc.new(accountNumber, licenseKey, serviceURL);
-  
+taxSvc = AvaTax::TaxService.new
+
 #Required Request Parameters
 location = {
-  :Latitude => "47.627935", 
-  :Longitude => "-122.51702"
+  :latitude => "47.627935",
+  :longitude => "-122.51702"
 }
 saleAmount = 10
 
 # Call the service
-geoTaxResult = taxSvc.EstimateTax(location, saleAmount)
+geoTaxResult = taxSvc.estimate(location, saleAmount)
 
 # Print Results
 puts "EstimateTaxTest ResultCode: "+geoTaxResult["ResultCode"]
@@ -25,7 +23,7 @@ if geoTaxResult["ResultCode"] != "Success"
 else
   puts "Total Rate: " + geoTaxResult["Rate"].to_s + " Total Tax: " + geoTaxResult["Tax"].to_s
   #Show the tax amount calculated at each jurisdictional level
-  geoTaxResult["TaxDetails"].each do |taxDetail| 
-    puts "   " + "Jurisdiction: " + taxDetail["JurisName"] + " Tax: " + taxDetail["Tax"].to_s 
+  geoTaxResult["TaxDetails"].each do |taxDetail|
+    puts "   " + "Jurisdiction: " + taxDetail["JurisName"] + " Tax: " + taxDetail["Tax"].to_s
   end
 end
