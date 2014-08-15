@@ -10,7 +10,7 @@ cancelTaxRequest = {
     # Required Request Parameters
     :CompanyCode => "APITrialCompany",
     :DocType => "SalesInvoice",
-    :DocCode => ARGV[0],
+    :DocCode => "INV001",
     :CancelCode => "DocVoided"
     }
 
