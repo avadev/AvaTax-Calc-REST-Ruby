@@ -55,6 +55,6 @@ Examples
 | :----------------- | :---------- |
 | CancelTaxTest.rb   | Demonstrates [AvaTax::TaxService.cancel](http://developer.avalara.com/api-docs/rest/tax/cancel) used to [void a document](http://developer.avalara.com/api-docs/api-reference/canceltax) |
 | EstimateTaxTest.rb | Demonstrates the [AvaTax::TaxService.estimate](http://developer.avalara.com/api-docs/rest/tax/get) method used for product- and line- indifferent tax estimates. |
-| GetTaxTest.rb      | Demonstrates the [AvaTax::TaxService.get](http://developer.avalara.com/api-docs/rest/tax/post) method used for product- and line- specific [calculation](http://developer.avalara.com/api-docs/api-reference/gettax). **NOTE:** This will fail if run multiple times because it uses the same document id, which can never be deleted, only voided. |
+| GetTaxTest.rb      | Demonstrates the [AvaTax::TaxService.get](http://developer.avalara.com/api-docs/rest/tax/post) method used for product- and line- specific [calculation](http://developer.avalara.com/api-docs/api-reference/gettax). **NOTE:** This will generate a new transaction/document each time. |
 | PingTest.rb        | Uses a hardcoded `AvaTax::TaxService.estimate` call to test connectivity and credential information. |
 | ValidateTest.rb    | Demonstrates the [AvaTax::AddressService.validate](http://developer.avalara.com/api-docs/rest/address-validation) method to [normalize an address](http://developer.avalara.com/api-docs/api-reference/address-validation). |
