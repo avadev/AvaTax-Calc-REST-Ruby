@@ -10,7 +10,7 @@ class AvaTax::TaxService
   attr_accessor :account_number, :license_key, :service_url
 
   def initialize()
-    puts AvaTax::Configuration.instance.inspect
+    #puts AvaTax::Configuration.instance.inspect
     @account_number = AvaTax::Configuration.instance.account_number
     @license_key = AvaTax::Configuration.instance.license_key
     @service_url = AvaTax::Configuration.instance.service_url
@@ -19,8 +19,8 @@ class AvaTax::TaxService
   def get(request_hash)
     uri = @service_url + @@service_path + "get"
     cred = 'Basic '+ Base64.encode64(@account_number + ":"+ @license_key)
-    puts JSON.generate(request_hash)
-    res = RestClient.post uri, JSON.generate(request_hash), :authorization => cred
+    #puts JSON.generate(request_hash)
+    res = RestClient.post(uri, JSON.generate(request_hash), :authorization => cred){|response, request, result| response}
     JSON.parse(res.body)
   end
 
