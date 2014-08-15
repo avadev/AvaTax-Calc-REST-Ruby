@@ -11,12 +11,12 @@ getTaxRequest = {
   # Document Level Elements
   # Required Request Parameters
   :CustomerCode => "ABC4335",
-  :DocDate => "#{Date.today}",
+  :DocDate => "2014-01-01",
 
   # Best Practice Request Parameters
   :CompanyCode => "APITrialCompany",
   :Client => "AvaTaxSample",
-  :DocCode => "INV#{Time.new.to_i}",
+  :DocCode => "INV001",
   :DetailLevel => "Tax",
   :Commit => false,
   :DocType => "SalesInvoice",
