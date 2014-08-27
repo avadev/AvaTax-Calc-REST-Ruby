@@ -20,7 +20,7 @@ class AvaTax::TaxService
     uri = @service_url + @@service_path + "get"
     cred = 'Basic '+ Base64.encode64(@account_number + ":"+ @license_key)
     #puts JSON.generate(request_hash)
-    res = RestClient.post(uri, JSON.generate(request_hash), :authorization => cred){|response, request, result| response}
+    res = RestClient.post(uri, JSON.generate(request_hash), :authorization => cred, :content_type => 'application/json'){|response, request, result| response}
     JSON.parse(res.body)
   end
 
@@ -28,7 +28,7 @@ class AvaTax::TaxService
   def cancel(request_hash)
     uri = @service_url + @@service_path + "cancel"
     cred = 'Basic '+ Base64.encode64(@account_number + ":"+ @license_key)
-    res = RestClient.post uri, JSON.generate(request_hash), :authorization => cred
+    res = RestClient.post uri, JSON.generate(request_hash), :authorization => cred, :content_type => 'application/json'
     JSON.parse(res.body)["CancelTaxResult"]
     #You may notice that this is slightly different from CalcTax, etc. The CancelTax result is  nested in this result object - this makes it consumable in a way that is consistant with the other response formats.
   end
@@ -45,7 +45,7 @@ class AvaTax::TaxService
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_PEER
     cred = 'Basic '+ Base64.encode64(@account_number + ":"+ @license_key)
-    res = http.get(uri.request_uri, 'Authorization' => cred)
+    res = http.get(uri.request_uri, 'Authorization' => cred, 'Content-Type' => 'application/json')
     JSON.parse(res.body)
   end
 
