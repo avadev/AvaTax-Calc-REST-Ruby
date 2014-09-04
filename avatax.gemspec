@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "avatax"
-  s.version = "14.4.2"
+  s.version = "14.4.3"
   s.summary = "Library for accessing Avalara's AvaTax and Address Validation services"
   s.authors = ['Anya Stettler', 'Jeff Weiss']
   s.email = 'anya.stettler@avalara.com'
