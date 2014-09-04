@@ -13,7 +13,7 @@ module AvaTax
 
     def account_number(acct_num = nil)
       return @account_number if @account_number and acct_num.nil?
-      @account_number = acct_num
+      @account_number = acct_num.to_s
     end
 
     def license_key(license = nil)
