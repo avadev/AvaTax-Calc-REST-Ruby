@@ -1,5 +1,6 @@
 avatax.rb
 =====================
+[Other Samples](http://developer.avalara.com/api-docs/api-sample-code)
 
 This is a Ruby client library for the [AvaTax REST API](http://developer.avalara.com/api-docs/rest)
 methods:
