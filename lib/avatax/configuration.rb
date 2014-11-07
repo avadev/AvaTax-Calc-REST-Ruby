@@ -5,9 +5,9 @@ module AvaTax
     include Singleton
 
     def initialize
-      @account_number = ENV['AVATAX_ACCOUNT_NUMBER']
-      @license_key = ENV['AVATAX_LICENSE_KEY']
-      @service_url = ENV['AVATAX_SERVICE_URL']
+      @account_number = ENV['AVATAX_ACCOUNT_NUMBER'] || " "
+      @license_key = ENV['AVATAX_LICENSE_KEY'] || " "
+      @service_url = ENV['AVATAX_SERVICE_URL'] || " "
       super
     end
 
