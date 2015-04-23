@@ -25,13 +25,13 @@ getTaxRequest = {
   # :CustomerUsageType => "G",
   # :ExemptionNo => "12345",
   # :Discount => 50,
-  # :TaxOverride => 
-  # [{
+  # :TaxOverride =>
+  # {
   #   :TaxOverrideType => "TaxDate",
   #   :Reason => "Adjustment for return",
   #   :TaxDate => "2013-07-01",
   #   :TaxAmount => 0,
-  # }],
+  # },
 
   # Optional Request Parameters
   :PurchaseOrderNo => "PO123456",
@@ -85,13 +85,13 @@ getTaxRequest = {
     # :CustomerUsageType => "L",
     # :Discounted => true,
     # :TaxIncluded => true,
-    # :TaxOverride => 
-    # [{
+    # :TaxOverride =>
+    # {
     #   :TaxOverrideType => "TaxDate",
     #   :Reason => "Adjustment for return",
     #   :TaxDate => "2013-07-01",
     #   :TaxAmount => 0,
-    # }],
+    # },
 
     #Optional Request Parameters
     :Ref1 => "ref123",
